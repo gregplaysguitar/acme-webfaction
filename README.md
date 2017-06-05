@@ -33,7 +33,7 @@ Usage
    acme.sh --issue -w /path/to/webroot -d example.com -d www.example.com
    ```
    
-   Note you'll need to set up your site to serve the files in `/path/to/webroot/.well-known` at http://example.com/.well-known. You may need an apache alias for this:
+   Note you'll need to set up your site to serve the files in `/path/to/webroot/.well-known` at http://example.com/.well-known. You may need an alias for this in `/home/USER/webapps/APPNAME/apache2/conf/httpd.conf`:
    
    ```
    Alias /.well-known/ /path/to/webroot/.well-known/
