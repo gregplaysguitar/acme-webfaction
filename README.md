@@ -1,8 +1,13 @@
 acme-webfaction
 ===
 
-Issue and maintain letsencypt ssl certificates on webfaction using [acme.sh](https://github.com/Neilpang/acme.sh). This script uploads the certificates using the webfaction api, and should be triggered via an acme.sh reloadcmd.
+This script enables you to automatically issue and maintain letsencypt ssl certificates on webfaction using [acme.sh][], without having to perform manual renewals.
 
+Requires [acme.sh][] and a [webfaction][] account.
+
+#### How does it work?
+
+Certificates are issued, installed and renewed using [acme.sh][]. Whenever a certificate is renewed, it is uploaded to the webfaction API via the [acme.sh][] `--reloadcmd` argument.
 
  Installation
 ---
@@ -56,3 +61,7 @@ You can test it's working by forcing a renewal - run the command from the cronta
 ```
 
 If everything is working correctly, you should see the certificates renewed and the message "Reload success".
+
+
+[acme.sh]: https://github.com/Neilpang/acme.sh
+[webfaction]: https://www.webfaction.com/
