@@ -39,20 +39,22 @@ Usage
    Alias /.well-known/ /path/to/webroot/.well-known/
    ```
    
-2. Create an ssl certificate in the webfaction control panel, and add it to your site. See the [webfaction ssl documentation](https://docs.webfaction.com/user-guide/websites.html#add-a-certificate) for more information. You'll need to copy and paste the certificate details from the output of step 1.
+2. Create an ssl certificate in the webfaction control panel, and add it to your site. See the [webfaction ssl documentation](https://docs.webfaction.com/user-guide/websites.html#add-a-certificate) for more information. You'll need to copy and paste the certificate details from the output of step 1
 
 3. Install the certificate using the `acme.sh --install-cert`, where 
 
    - `WF_SERVER` is your webfaction server name, i.e. Web486 (note, it must be title cased)
    - `WF_USER` and `WF_PASSWORD` is your webfaction control panel login
-   - `WF_CERT_NAME` is the name of the certificate you created in step 2.
+   - `WF_CERT_NAME` is the name of the certificate you created in step 2
 
    ```
-   acme.sh --install-cert -d example.com \
+   acme.sh --install-cert -d example.com -d www.example.com \
     --reloadcmd "WF_SERVER=WebXX WF_USER=user WF_PASSWORD=pass WF_CERT_NAME=certname acme_webfaction.py"
    ```
-   
-At this point you should have an acme.sh crontab entry which will renew the certificates automatically, and on renewal, trigger `acme_webfaction.py` to update the cert via the webfaction api.
+
+#### Testing it out
+
+At this point you should have an [acme.sh][] crontab entry which will renew the certificates automatically, and on renewal, trigger `acme_webfaction.py` to update the cert via the webfaction api.
 
 You can test it's working by forcing a renewal - run the command from the crontab with `--force` appended, i.e. something like:
 
