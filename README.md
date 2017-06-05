@@ -5,11 +5,13 @@ This script enables you to automatically issue and maintain letsencypt ssl certi
 
 Requires [acme.sh][] and a [webfaction][] account.
 
+See <https://gregbrown.co/code/letsencrypt-webfaction-automated> for more information.
+
 #### How does it work?
 
 Certificates are issued, installed and renewed using [acme.sh][]. Whenever a certificate is renewed, it is uploaded to the webfaction API via the [acme.sh][] `--reloadcmd` argument.
 
- Installation
+Installation
 ---
 
 1. Install acme.sh:
@@ -18,25 +20,26 @@ Certificates are issued, installed and renewed using [acme.sh][]. Whenever a cer
    curl https://get.acme.sh | sh 
    ```
    
-2. Download `acme_webfaction.py` to your bin directory - i.e. `/home/USER/bin`. Make sure it's executable:
+2. Download `acme_webfaction.py` from <https://github.com/gregplaysguitar/acme-webfaction> and move it into your bin directory - i.e. `/home/USER/bin`. Make sure it's executable:
 
-   ```   
+   ```
+   cp /path/to/acme_webfaction.py ~/bin/
    chmod +x ~/bin/acme_webfaction.py
    ```
 
 Usage
 ---
 
-1. Issue a certificate for your webfaction site as per the [acme.sh](https://github.com/Neilpang/acme.sh) documentation:
+1. Issue a certificate for your webfaction site as per the [acme.sh][] documentation:
 
    ```
    acme.sh --issue -w /path/to/webroot -d example.com -d www.example.com
    ```
    
-   Note you'll need to set up your site to serve the files in `/path/to/webroot/.well-known` at http://example.com/.well-known. You may need an alias for this in `/home/USER/webapps/APPNAME/apache2/conf/httpd.conf`:
+   Note you'll need to set up your site to serve the files in `/path/to/webroot/.well-known` at http://example.com/.well-known. If you're working with a static or php site, you can just add your actual webroot here. For sites without a webroot, i.e. django or rails, use a temp directory as your webroot and add an alias in `/home/USER/webapps/APPNAME/apache2/conf/httpd.conf`:
    
    ```
-   Alias /.well-known/ /path/to/webroot/.well-known/
+   Alias /.well-known/ /home/USER/temp/.well-known/
    ```
    
 2. Create an ssl certificate in the webfaction control panel, and add it to your site. See the [webfaction ssl documentation](https://docs.webfaction.com/user-guide/websites.html#add-a-certificate) for more information. You'll need to copy and paste the certificate details from the output of step 1
@@ -63,6 +66,7 @@ You can test it's working by forcing a renewal - run the command from the cronta
 ```
 
 If everything is working correctly, you should see the certificates renewed and the message "Reload success".
+
 
 
 [acme.sh]: https://github.com/Neilpang/acme.sh
