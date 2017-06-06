@@ -9,7 +9,7 @@ See <https://gregbrown.co/code/letsencrypt-webfaction-automated> for more inform
 
 #### How does it work?
 
-Certificates are issued, installed and renewed using [acme.sh][]. Whenever a certificate is renewed, it is uploaded to the webfaction API via the [acme.sh][] `--reloadcmd` argument.
+Certificates are issued, installed and renewed using [acme.sh][]. Whenever a certificate is renewed, this script uploads it to the webfaction API via the [acme.sh][] `--reloadcmd` argument.
 
 Installation
 ---
