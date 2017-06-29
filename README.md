@@ -23,7 +23,8 @@ Installation
 2. Download `acme_webfaction.py` from <https://github.com/gregplaysguitar/acme-webfaction> and move it into your bin directory - i.e. `/home/USER/bin`. Make sure it's executable:
 
    ```
-   cp /path/to/acme_webfaction.py ~/bin/
+   wget https://raw.githubusercontent.com/gregplaysguitar/acme-webfaction/master/acme_webfaction.py
+   cp ./acme_webfaction.py ~/bin/
    chmod +x ~/bin/acme_webfaction.py
    ```
 
