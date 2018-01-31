@@ -40,6 +40,7 @@ Usage
    Note you'll need to set up your site to serve the files in `/path/to/webroot/.well-known` at http://example.com/.well-known. If you're working with a static or php site, you can just add your actual webroot here. For sites without a webroot, i.e. django or rails, use a temp directory as your webroot and add an alias in `/home/USER/webapps/APPNAME/apache2/conf/httpd.conf`:
    
    ```
+   LoadModule alias_module      modules/mod_alias.so
    Alias /.well-known/ /home/USER/temp/.well-known/
    ```
    
