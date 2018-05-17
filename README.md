@@ -56,6 +56,8 @@ Usage
    acme.sh --install-cert -d example.com -d www.example.com \
     --reloadcmd "WF_SERVER=WebXX WF_USER=user WF_PASSWORD=pass WF_CERT_NAME=certname acme_webfaction.py"
    ```
+   
+   Alternately, you can set `WF_BASE64_PASSWORD` to your base64-encoded password, instead of using `WF_PASSWORD`, to work around issues with special characters in passwords.
 
 #### Testing it out
 
