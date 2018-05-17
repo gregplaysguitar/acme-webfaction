@@ -66,9 +66,15 @@ if __name__ == '__main__':
 
     # user-provided config via envvar
     WF_USER = os.environ['WF_USER']
-    WF_PASSWORD = os.environ['WF_PASSWORD']
     WF_SERVER = os.environ['WF_SERVER']
     WF_CERT_NAME = os.environ['WF_CERT_NAME']
+    
+    # allow setting password as plain text or base64 encoded
+    # see https://github.com/Neilpang/acme.sh/issues/1599
+    if 'WF_PASSWORD' in os.environ:
+        WF_PASSWORD = os.environ['WF_PASSWORD']
+    else:
+        WF_PASSWORD = base64.b64decode(os.environ['WF_BASE64_PASSWORD']).decode('utf-8')
 
     # acme.sh sets these envvars
     # see https://github.com/Neilpang/acme.sh/blob/d29aa43ba46d/acme.sh#L4198
