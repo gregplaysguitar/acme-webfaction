@@ -20,6 +20,7 @@ then install with
 """
 
 import os
+import base64
 from xmlrpclib import ServerProxy, Fault
 
 
