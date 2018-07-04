@@ -20,7 +20,7 @@ Installation
    curl https://get.acme.sh | sh 
    ```
    
-2. Download `acme_webfaction.py` from <https://github.com/gregplaysguitar/acme-webfaction> and move it into your bin directory - i.e. `/home/USER/bin`. Make sure it's executable:
+2. Download `acme_webfaction.py` from <https://github.com/gregplaysguitar/acme-webfaction> and move it into your bin directory - i.e. `/home/USER/bin`. Make sure it's executable, and that the bin directory is on your path.
 
    ```
    wget https://raw.githubusercontent.com/gregplaysguitar/acme-webfaction/master/acme_webfaction.py
@@ -71,6 +71,10 @@ You can test it's working by forcing a renewal - run the command from the cronta
 
 If everything is working correctly, you should see the certificates renewed and the message "Reload success".
 
+Troubleshooting
+---
+
+If you get an error like `acme_webfaction.py : command not found` in step 3, you may need to add your `~/bin` directory to your executable path. Alternately, just use the full path to the file, i.e. `/home/USER/bin/acme_webfaction.py`
 
 
 [acme.sh]: https://github.com/Neilpang/acme.sh
